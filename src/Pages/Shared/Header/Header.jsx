@@ -4,12 +4,13 @@ import moment from 'moment';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import Marquee from "react-fast-marquee";
 import './Header.css';
+import { FaRegUserCircle } from "react-icons/fa";
 
 const Header = () => {
     return (
         <Container>
             <div className='text-center'>
-                <img src={logo} alt="taja_news_logo" />
+                <img src={logo} className='logo' alt="taja_news_logo" />
                 <p className='text-secondary'>Travel Without Fear and Courage</p>
                 <h6 style={{ color: "#3f557a" }}>{moment().format("dddd, MMMM, YYYY, h:mm a ")}</h6>
             </div>
@@ -29,7 +30,7 @@ const Header = () => {
                             <Nav.Link href="#career">Career</Nav.Link>
                         </Nav>
                         <Nav className='d-flex align-items-center '>
-                            <Nav.Link>Profile</Nav.Link>
+                            <Nav.Link><Button variant=""><FaRegUserCircle size={'2em'}/></Button></Nav.Link>
                             <Nav.Link>
                                 <Button variant="dark">Login</Button>
                             </Nav.Link>
