@@ -10,8 +10,8 @@ const NewsCard = ({ news }) => {
     const { _id, title, details, image_url, author, rating, total_view } = news;
     return (
         <Card className="mb-4">
-            <Card.Header className='d-flex'>
-                <Image style={{ height: "40px" }} src={author?.img} roundedCircle></Image>
+            <Card.Header className='d-flex align-items-center'>
+                <Image style={{ height: "80px" }} src={author?.img} roundedCircle></Image>
                 <div className='ps-2 flex-grow-1'>
                     <p className='mb-0'>{author?.name}</p>
                     <p><small>{moment(author?.published_date).format('yyyy-MM-D')}{ }</small></p>
@@ -33,7 +33,8 @@ const NewsCard = ({ news }) => {
                 <Card.Title>
                     {details.length < 250 ? <>{details}</> :
                         <> {details.slice(0, 250)}...
-                            <Link>Read more</Link></>
+                            <Link to={`/news/${_id}`}>Read more</Link></>
+                            
                     }
                 </Card.Title>
 

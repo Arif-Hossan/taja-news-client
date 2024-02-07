@@ -4,6 +4,8 @@ import Home from "../Pages/Home/Home/Home";
 import Category from "../Pages/Home/Category/Category";
 import NewsLayout from "../layouts/NewsLayout";
 import News from "../Pages/News/News/News";
+import Login from "../Pages/Login/Login";
+import Register from "../Pages/Register/Register";
 // import Category from "../Pages/Category/Category";
 
 const router = createBrowserRouter([
@@ -15,6 +17,7 @@ const router = createBrowserRouter([
                 path:'/',
                 element:<Home></Home>
             },
+            
             {
                 path:'/category/:id',
                 element:<Category></Category>,
@@ -29,9 +32,18 @@ const router = createBrowserRouter([
         children:[
             {
                 path:'/news/:id',
-                element:<News></News>
+                element:<News></News>,
+                loader: ({params}) => fetch(`http://localhost:5000/news/${params.id}`)
             }
         ]
+    },
+    {
+        path:'/login',
+        element:<Login></Login>
+    },
+    {
+        path:'/register',
+        element:<Register></Register>
     }
 ])
 export default router;
