@@ -4,6 +4,7 @@ import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
 import { toast,ToastContainer } from 'react-toastify';
+import { ActionCodeOperation, sendSignInLinkToEmail } from 'firebase/auth';
 
 const Register = () => {
     const {createUser} = useContext(AuthContext);
@@ -21,7 +22,8 @@ const Register = () => {
         .then(result=>{
             const loggedUser = result.user;
             // console.log(loggedUser.photoURL);
-            
+            // send sign in Link
+           
             toast(`Welcome ${loggedUser.email} for register Taja News`);
             event.currentTarget.reset();
         })
