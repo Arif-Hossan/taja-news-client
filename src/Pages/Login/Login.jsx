@@ -1,14 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Header from '../Shared/Header/Header';
 import HeaderNavbar from '../Shared/HeaderNavbar/HeaderNavbar';
 import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
 import { ToastContainer, toast } from 'react-toastify';
-
+import { FaEye ,FaEyeSlash } from "react-icons/fa";
 const Login = () => {
     const {logIn} = useContext(AuthContext);
-    
+    const [showPassword,setShowPassword] = useState(false);
     const handleLogin = (event) => {
         event.preventDefault();
         // const form = event.target;
@@ -45,10 +45,17 @@ const Login = () => {
                         <Form.Label>Email address</Form.Label>
                         <Form.Control type="email" name="email" className='bg-light' placeholder="Enter email" />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Group className="mb-3 position-relative" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" name="password" className='bg-light' placeholder="Password" />
+                        <Form.Control type={showPassword ? "text" : "password"} name="password" className='bg-light' placeholder="Password" />
+                       
+                        <span className='position-absolute top-50 end-0 pe-2' onClick={()=>setShowPassword(!showPassword)}>
+                            {showPassword ? <span><FaEyeSlash></FaEyeSlash></span>:<span><FaEye></FaEye></span>}
+                    </span>
+                        
+                        
                     </Form.Group>
+                   
 
                     <Button variant="dark" className="w-100" type="submit">
                         Login
