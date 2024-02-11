@@ -23,7 +23,12 @@ const Login = () => {
         .then(result=>{
             const loggedUser = result.user;
             console.log(loggedUser);
+            if(!loggedUser.emailVerified){
+                toast('Please verify your email');
+                
+            }
             toast(`Welcome ${loggedUser.email} for Login`)
+            event.target.reset();
         })
         .catch(error=>{
             console.log(error.message);
